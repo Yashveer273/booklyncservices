@@ -2,26 +2,21 @@
 
 import { useState } from "react";
 import { Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Twitter } from "lucide-react";
-
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { firestore } from "../dash/firebasecon";
 type FormData = {
-  fullName: string;
-  company: string;
+  name: string;
+  
   email: string;
   phone: string;
-  address: string;
+
   subject: string;
   message: string;
 };
 
 export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
-    fullName: "",
-    company: "",
-    email: "",
-    phone: "",
-    address: "",
-    subject: "",
-    message: "",
+    name: "", phone: "", email: "", subject: "", message: ""
   });
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
@@ -33,19 +28,19 @@ export default function ContactPage() {
 
   const validate = () => {
     const newErrors: Partial<FormData> = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required";
-    if (!formData.company.trim()) newErrors.company = "Company is required";
+    if (!formData.name.trim()) newErrors.name = "Full Name is required";
+ 
     if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = "Email is invalid";
     if (!formData.phone.trim()) newErrors.phone = "Phone Number is required";
     else if (!/^\d{10,15}$/.test(formData.phone.replace(/\D/g, ""))) newErrors.phone = "Phone Number is invalid";
-    if (!formData.address.trim()) newErrors.address = "Address is required";
+   
     if (!formData.subject.trim()) newErrors.subject = "Subject is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -53,16 +48,21 @@ export default function ContactPage() {
       setSuccessMsg(false);
     } else {
       setErrors({});
-      setSuccessMsg(true);
-      setFormData({
-        fullName: "",
-        company: "",
-        email: "",
-        phone: "",
-        address: "",
-        subject: "",
-        message: "",
+      try {
+      await addDoc(collection(firestore, "tickets"), {
+        ...formData,
+        status: "open", // default
+        createdAt: serverTimestamp(),
       });
+
+      alert("Message sent successfully!");
+      setFormData({ name: "", phone: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Error saving ticket: ", error);
+    }
+      setSuccessMsg(true);
+
+     
     }
   };
 
@@ -142,29 +142,16 @@ export default function ContactPage() {
 
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div className="flex flex-col">
-                <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
+              
+<input
+                 type="text"
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
-                  placeholder="Full Name"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
+                  placeholder="name"
+                  className="w-full border text-black border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
                 />
-                {errors.fullName && <span className="text-red-500 text-sm">{errors.fullName}</span>}
-              </div>
-
-              <div className="flex flex-col">
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  placeholder="Company"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
-                />
-                {errors.company && <span className="text-red-500 text-sm">{errors.company}</span>}
-              </div>
+              
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -175,7 +162,7 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
+                  className="w-full border border-gray-300 text-black rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
                 />
                 {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
               </div>
@@ -187,23 +174,13 @@ export default function ContactPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Phone Number"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
+                  className="w-full border border-gray-300 text-black rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
                 />
                 {errors.phone && <span className="text-red-500 text-sm">{errors.phone}</span>}
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <input
-                type="text"
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-                placeholder="Address"
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
-              />
-              {errors.address && <span className="text-red-500 text-sm">{errors.address}</span>}
-            </div>
+            
 
             <div className="flex flex-col">
               <input
@@ -212,7 +189,7 @@ export default function ContactPage() {
                 value={formData.subject}
                 onChange={handleChange}
                 placeholder="Subject"
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
+                className="w-full border border-gray-300 text-black rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
               />
               {errors.subject && <span className="text-red-500 text-sm">{errors.subject}</span>}
             </div>
@@ -224,7 +201,7 @@ export default function ContactPage() {
                 onChange={handleChange}
                 placeholder="Your Message"
                 rows={4}
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
+                className="w-full border border-gray-300 text-black rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#e03e00]"
               ></textarea>
               {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
             </div>

@@ -126,10 +126,10 @@ export default function Pricing() {
                   <ul className="space-y-2">
                     {service.points.slice(0, 3).map((point, i) => (
                       <li key={i} className="flex items-start text-xs sm:text-sm">
-                        <div className="flex-shrink-0 w-4 h-4 bg-[#ff4500]/10 rounded-full flex items-center justify-center mr-2 mt-0.5">
+                        <div className="flex-shrink-0 w-4 h-4 bg-[#ff4500]/10 rounded-full  flex items-center justify-center mr-2 mt-0.5">
                           <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#ff4500]" />
                         </div>
-                        <span className="leading-relaxed">{point}</span>
+                        <span className="leading-relaxed text-black">{point}</span>
                       </li>
                     ))}
                   </ul>

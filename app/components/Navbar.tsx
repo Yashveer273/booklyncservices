@@ -17,7 +17,7 @@ const Navbar = () => {
     { name: 'Services', href: '/services' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Testimonials', href: '/testimonials' },
-    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Dashboard', href: '/dash' },
     
   ]
 
@@ -37,7 +37,7 @@ const Navbar = () => {
               height={32}
               className="object-contain"
             />
-            <span className="text-base font-semibold text-white">
+            <span className="text-base font-semibold" style={{color:"orange"}}>
               Book Lynk Services Pvt Ltd
             </span>
           </Link>

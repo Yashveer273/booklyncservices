@@ -219,7 +219,7 @@ export default function Home() {
           className="relative z-10 max-w-7xl mx-auto text-white"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg leading-tight">
-            We don't just build websites, apps, & campaigns — we build your
+            We dont just build websites, apps, & campaigns — we build your
             business
           </h1>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10">
@@ -227,7 +227,7 @@ export default function Home() {
               At Book Lynk Services Pvt Ltd, we are passionate about turning
               visionary ideas into powerful digital realities. As a dynamic IT
               Solutions and PR company, we empower businesses to thrive in
-              today's fast-paced digital ecosystem.
+              todays fast-paced digital ecosystem.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 px-4">
@@ -290,7 +290,7 @@ export default function Home() {
             Why Choose Book Lynk Services Pvt Ltd?
           </motion.h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12 px-4">
-            With years of expertise in IT, PR, and Digital Marketing, we've
+            With years of expertise in IT, PR, and Digital Marketing, we have
             empowered businesses and individuals to build strong digital
             identities and achieve measurable growth.
           </p>
