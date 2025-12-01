@@ -6,10 +6,10 @@ import Footer from "../components/Footer";
 export default function Pricing() {
   const plans = [
     {
-      name: "All-In-One Growth Package",
-      price: "₹25,000",
+      name: "All-In-One Growth Package ",
+      price: "₹35,000",
       period: "month",
-      yearlyPrice: "₹2,40,000/year (Save ₹60,000)",
+      yearlyPrice: "₹3,60,000/year (Save ₹60,000)",
       description: "Everything your brand needs — in one powerful package",
       features: [
         "Website Maintenance – speed, bug fixes, security checks, backups, reports",
@@ -86,7 +86,7 @@ export default function Pricing() {
               post on social media? 
               <br className="hidden sm:block" />
               <br className="hidden sm:block" />
-              <span className="font-semibold">We have got you covered.</span>
+              <span className="font-semibold">We Have got you covered.</span>
               <br className="hidden sm:block" />
               <br className="hidden sm:block" />
               We offer a comprehensive monthly service that keeps your website
@@ -103,7 +103,7 @@ export default function Pricing() {
         <div className="w-full px-4 sm:px-6 lg:px-12">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
-              What's Included
+              Whats Included
             </h2>
             <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
               A complete package of growth services designed to make your brand thrive.

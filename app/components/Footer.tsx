@@ -1,15 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Youtube,
-  Twitter,
-} from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, Twitter } from "lucide-react";
 import Link from "next/link";
-import { footer } from "framer-motion/client";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -119,7 +112,7 @@ export default function Footer() {
                 Be the first to know
               </h5>
               <p className="text-gray-500 text-sm mb-4">
-                We'll send you only what matters — no noise, no spam.
+                We&#39;ll send you only what matters — no noise, no spam.
               </p>
 
               {isSubscribed ? (
@@ -128,38 +121,11 @@ export default function Footer() {
                     Thank you for subscribing! 🎉
                   </p>
                   <p className="text-green-600 text-sm mt-1">
-                    You'll receive our latest updates and insights.
+                    You&#39;ll receive our latest updates and insights.
                   </p>
                 </div>
               ) : (
                 <div className="flex flex-col">
-                  <div className="flex">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                        if (emailError) setEmailError("");
-                      }}
-                      placeholder="Enter Email Address"
-                      className={`flex-1 px-4 py-2 border rounded-l-lg focus:outline-none transition-colors ${
-                        emailError
-                          ? "border-red-300 focus:border-red-500"
-                          : "border-gray-300 focus:border-[var(--color-orange)]"
-                      }`}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          handleSubscribe(e);
-                        }
-                      }}
-                    />
-                    <button
-                      onClick={handleSubscribe}
-                      className="bg-[var(--color-orange)] text-white px-6 py-2 rounded-r-lg hover:bg-[var(--color-orange-hover)] transition-colors"
-                    >
-                      Subscribe
-                    </button>
-                  </div>
                   {emailError && (
                     <p className="text-red-500 text-sm mt-2">{emailError}</p>
                   )}
@@ -173,11 +139,21 @@ export default function Footer() {
                 Navigation
               </h4>
               <ul className="space-y-3">
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/about">About Us</Link></li>
-                <li><Link href="/services">Services</Link></li>
-                <li><Link href="/portfolio">Portfolio</Link></li>
-                <li><Link href="/pricing">Pricing</Link></li>
+                <li>
+                  <Link href="/">Home</Link>
+                </li>
+                <li>
+                  <Link href="/about">About Us</Link>
+                </li>
+                <li>
+                  <Link href="/services">Services</Link>
+                </li>
+                <li>
+                  <Link href="/portfolio">Portfolio</Link>
+                </li>
+                <li>
+                  <Link href="/pricing">Pricing</Link>
+                </li>
               </ul>
             </div>
 
@@ -187,10 +163,18 @@ export default function Footer() {
                 Information
               </h4>
               <ul className="space-y-3">
-                <li><Link href="/privacy">Privacy Policy</Link></li>
-                <li><Link href="/terms">Terms of Service</Link></li>
-                <li><Link href="/refund">Refund Policy</Link></li>
-                <li><Link href="/faq">FAQ</Link></li>
+                <li>
+                  <Link href="/privacy">Privacy Policy</Link>
+                </li>
+                <li>
+                  <Link href="/terms">Terms of Service</Link>
+                </li>
+                <li>
+                  <Link href="/refund">Refund Policy</Link>
+                </li>
+                <li>
+                  <Link href="/faq">FAQ</Link>
+                </li>
               </ul>
             </div>
 
@@ -226,4 +210,3 @@ export default function Footer() {
     </footer>
   );
 }
-
