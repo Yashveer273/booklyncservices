@@ -157,7 +157,7 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Email validation function
+
 
   return (
     <div className="bg-[var(--color-lightgray)]">
