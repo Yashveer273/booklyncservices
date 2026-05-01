@@ -194,7 +194,8 @@ export default function Home() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 px-4">
             <Link
-              href="https://booklynk-services-landing-page.vercel.app/"
+              // href="https://booklynk-services-landing-page.vercel.app/"
+             href=" http://landing-page.booklynkservices.com/"
               className="bg-[var(--color-orange)] text-white px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-[var(--color-orange-hover)] hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-sm sm:text-base"
             >
               Get Started <ArrowRight className="ml-2" size={20} />
