@@ -181,15 +181,12 @@ export default function Home() {
           className="relative z-10 max-w-7xl mx-auto text-white"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg leading-tight">
-            We do not just build websites, apps, & campaigns — we build your
-            business
+       Launch Your Empire
+For Just ₹30,000
           </h1>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10">
             <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-white drop-shadow-md">
-              At Book Lynk Services Pvt Ltd, we are passionate about turning
-              visionary ideas into powerful digital realities. As a dynamic IT
-              Solutions and PR company, we empower businesses to thrive in
-              todays fast-paced digital ecosystem.
+         Stop dreaming about financial freedom and start building it. Booklynk provides the infrastructure for a global dropshipping business.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 px-4">
